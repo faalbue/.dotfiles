@@ -158,3 +158,15 @@ export VISUAL=$EDITOR
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+if [ -f "$HOME/.bash_aliases" ] ; then
+  source "$HOME/.bash_aliases"
+fi
+
+if [ -f "$HOME/.local/.zshrc" ] ; then
+  source "$HOME/.local/.zshrc"
+fi
+
+if [ -f "$HOME/.local/.bash_aliases" ] ; then
+  source "$HOME/.local/.bash_aliases"
+fi
