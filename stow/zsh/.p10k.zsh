@@ -1644,7 +1644,7 @@
     local timeout_in_hours=24
     local timeout_in_seconds=$(($timeout_in_hours*60*60))
 
-    if [[ ! (-f "$cache_file" && $(($(date +%s) - $(stat -c '%Y' "$cache_file") < $timeout_in_seconds)) -gt 0) ]]; then
+    if [[ ! (-f "$cache_file" && $(($(date +%s) - $(stat -f '%m' "$cache_file") < $timeout_in_seconds)) -gt 0) ]]; then
       local github_reponse=$(curl -Ls -o /dev/null -w %{url_effective} https://github.com/sbt/sbt/releases/latest)
       local latest_sbt_version_on_github=$(echo $github_reponse | awk -F "v" '/^https:\/\/github.com\/sbt\/sbt\/releases\/tag\//{print $NF}')
       local maven_url="https://ossindex.sonatype.org/component/pkg:maven/org.scala-sbt/sbt@$latest_sbt_version_on_github"
