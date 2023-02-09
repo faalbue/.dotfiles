@@ -170,3 +170,4 @@ fi
 if [ -f "$HOME/.local/.bash_aliases" ] ; then
   source "$HOME/.local/.bash_aliases"
 fi
+
