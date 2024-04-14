@@ -85,6 +85,7 @@ alias gwipgp='gwip && gp'
 alias gwipgpe='gwip && gpe'
 alias gwipp='gcmsg "--wip-- [skip ci]" --no-verify --no-gpg-sign'
 alias hk='gcam housekeeping && gpe'
+alias hydrate='gfa && gcd && gl && gbdanr'
 alias lg='lazygit'
 
 # Nix
