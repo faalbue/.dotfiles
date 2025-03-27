@@ -48,6 +48,7 @@
       unzip
       xq
       zip
+      zsh
     ];
 
     stateVersion = "25.05";

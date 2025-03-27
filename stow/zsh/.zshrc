@@ -1,3 +1,9 @@
+# Mac manages zsh so every mac upgrade overrides /etc/zshrc that includes these lines.
+# If exists, this file is loaded as the very first thing in ~/.zshrc thus fixing the issue.
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -25,7 +31,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' mode auto      # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
@@ -113,10 +119,8 @@ source $ZSH/oh-my-zsh.sh
 #    source /Users/faalbue/.tnsrc 
 #fi
 ###-tns-completion-end-###
-eval $(/usr/libexec/path_helper -s)
+#eval $(/usr/libexec/path_helper -s)
 
-export PATH="$PATH:/Users/faalbue/development/flutter/bin"
-export PATH="$PATH":"$HOME/development/flutter/.pub-cache/bin"
 export PATH="/User/faalbue/Library/Python/3.8/bin":$PATH
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
@@ -170,12 +174,6 @@ if [ -f "$HOME/.local/.bash_aliases" ] ; then
   source "$HOME/.local/.bash_aliases"
 fi
 
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/faalbue/Development/bin/google_cloud/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/faalbue/Development/bin/google_cloud/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/faalbue/Development/bin/google_cloud/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/faalbue/Development/bin/google_cloud/google-cloud-sdk/completion.zsh.inc'; fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
