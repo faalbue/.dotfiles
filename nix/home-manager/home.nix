@@ -4,7 +4,7 @@
   ...
 }: {
   home = {
-    homeDirectory = "/home/faalbue";
+    homeDirectory = "/Users/faalbue";
 
     packages = with pkgs; [
       bat
@@ -50,7 +50,7 @@
       zip
     ];
 
-    stateVersion = "24.11";
+    stateVersion = "25.05";
     username = "faalbue";
   };
 
