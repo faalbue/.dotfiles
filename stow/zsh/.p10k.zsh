@@ -1606,14 +1606,22 @@
     # and regular prompts.
     prompt_example
   }
-
   function prompt_my_doppler_config() {
-    local result=$(doppler --no-check-version configure --json | jq -r '.[] | {"enclave.project","enclave.config"}| join(".")')
-
-    if [[ "$result" == "." ]] ; then
+    if [ ! $(command -v doppler) ]; then
       return
     else
-      p10k segment -f 32 -i '' -t "$result"
+      doppler configure flags disable analytics --silent 2>/dev/null || true
+      doppler configure flags disable env-warning --silent 2>/dev/null || true
+
+      local project=$(doppler --no-check-version configure get project --plain)
+      local config=$(doppler --no-check-version configure get config --plain)
+      local result="$project.$config"
+
+      if [[ -z "$result" || "$result" == "." ]] ; then
+        return
+      else
+        p10k segment -f 32 -i '' -t "$result"
+      fi
     fi
   }
 

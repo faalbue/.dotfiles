@@ -91,3 +91,12 @@ alias lg='lazygit'
 # Nix
 alias nix-shell-q='echo -e ${buildInputs// /\\n} | cut -d - -f 2- | sort' # like nix-env -q
 alias nix-shell-qq='echo -e ${buildInputs// /\\n} | sort -t- -k2,2 -k3,3' # like nix-env -q
+
+# Nix Home Manager
+alias hm='home-manager'
+alias hmd='cd ~/.managed/nix/home-manager'
+alias hmgd='home-manager generations | head -n 2 | tac | cut -d " " -f 7 | xargs nix store diff-closures 2>/dev/null || true'
+alias hmp='home-manager packages'
+alias hms='home-manager switch --flake ~/.managed/nix/home-manager#faalbue && hmgd'
+alias hmu='nix flake update ~/.managed/nix/home-manager && hms'
+alias hmhe='nvim ~/.managed/nix/home-manager/home.nix'
