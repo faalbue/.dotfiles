@@ -32,18 +32,6 @@ alias vimc='vim ~/.config/nvim/general/config.vim'
 alias vimi='vim ~/.config/nvim/init.vim'
 alias vimp='vim ~/.config/nvim/plugins/all.vim'
 
-alias update='\
-  sudo apt update && \
-  sudo apt -y full-upgrade && \
-  sudo apt -y autoremove && \
-  cs update && \
-  refresh-completions && \
-  nix-channel --update && \
-  nix-env -u && \
-  cd ~/.dotfiles && \
-  gfa && \
-  nvim --headless +PackerSync +PlugUpdate +qall'
-
 # Git and GitHub
 alias fgco='gco $(gb | fzf)'
 alias fgcor='gco --track $(gbr | fzf)'
@@ -94,9 +82,15 @@ alias nix-shell-qq='echo -e ${buildInputs// /\\n} | sort -t- -k2,2 -k3,3' # like
 
 # Nix Home Manager
 alias hm='home-manager'
-alias hmd='cd ~/.managed/nix/home-manager'
+alias hmd='cd ~/.dotfiles/nix/home-manager'
 alias hmgd='home-manager generations | head -n 2 | tac | cut -d " " -f 7 | xargs nix store diff-closures 2>/dev/null || true'
 alias hmp='home-manager packages'
-alias hms='home-manager switch --flake ~/.managed/nix/home-manager#faalbue && hmgd'
-alias hmu='nix flake update ~/.managed/nix/home-manager && hms'
-alias hmhe='nvim ~/.managed/nix/home-manager/home.nix'
+alias hms='home-manager switch --flake ~/.dotfiles/nix/home-manager#faalbue && hmgd'
+alias hmu='nix flake update ~/.dotfiles/nix/home-manager && hms'
+alias hmhe='nvim ~/.dotfiles/nix/home-manager/home.nix'
+alias update='\
+  cs update && \
+  sudo --login nix-channel --update && \
+  sudo --login nix-env -u && \
+  nix flake update --flake ~/.dotfiles/nix/home-manager && \
+  hms'
