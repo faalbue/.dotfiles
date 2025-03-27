@@ -75,6 +75,7 @@ alias gwipp='gcmsg "--wip-- [skip ci]" --no-verify --no-gpg-sign'
 alias hk='gcam housekeeping && gpe'
 alias hydrate='gfa && gcd && gl && gbdanr'
 alias lg='lazygit'
+alias fl='zg fl'
 
 # Nix
 alias nix-shell-q='echo -e ${buildInputs// /\\n} | cut -d - -f 2- | sort' # like nix-env -q
@@ -85,7 +86,7 @@ alias hm='home-manager'
 alias hmd='cd ~/.dotfiles/nix/home-manager'
 alias hmgd='home-manager generations | head -n 2 | tac | cut -d " " -f 7 | xargs nix store diff-closures 2>/dev/null || true'
 alias hmp='home-manager packages'
-alias hms='home-manager switch --flake "/Users/faalbue/.dotfiles/nix/home-manager#faalbue" && hmgd'
+alias hms='home-manager switch --flake ~/.dotfiles/nix/home-manager#faalbue && hmgd'
 alias hmu='nix flake update ~/.dotfiles/nix/home-manager && hms'
 alias hmhe='nvim ~/.dotfiles/nix/home-manager/home.nix'
 alias update='\

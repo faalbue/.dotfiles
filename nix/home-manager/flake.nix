@@ -19,7 +19,7 @@
     ...
   }: let
     supportedSystems = [
-      "x86_64-linux"
+      "aarch64-darwin"
     ];
   in
     flake-utils.lib.eachSystem supportedSystems (

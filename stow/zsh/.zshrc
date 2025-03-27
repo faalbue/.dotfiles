@@ -192,3 +192,18 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+zg() {
+  local repo="$1"
+  z $repo
+  trees=()
+
+  for tree in "."/*; do
+    if [ -d "$tree" ]; then
+      branch=$(git -C $tree rev-parse --abbrev-ref HEAD) 2>/dev/null || continue
+      timestamp=$(git -C $tree show --no-patch --format=%cr) 2>/dev/null || continue
+      trees+="${tree:2} ${CYAN}$branch${RESET} ${GREEN}$timestamp${RESET}"
+    fi
+  done
+
+  cd $(printf "%b\n" "${trees[@]}" | fzf -e -i --ansi | cut -d " " -f1)
+}
