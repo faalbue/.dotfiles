@@ -33,7 +33,6 @@
       mosh
       ncdu
       neofetch
-      neovim
       nix-direnv
       nixd
       nnn
