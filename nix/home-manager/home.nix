@@ -16,6 +16,7 @@
       duf
       dust
       eza
+      fastfetch
       fd
       fx
       fzf
@@ -32,7 +33,6 @@
       lua51Packages.luarocks
       mosh
       ncdu
-      neofetch
       nix-direnv
       nixd
       nnn
